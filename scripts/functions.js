@@ -1,30 +1,8 @@
-import {studentList, saveToStorage, reassignId} from "../data/studentList.js";
 import {renderStats} from "./stats.js";
+import {studentList, saveToStorage, reassignId} from "../data/studentList.js";
+import {renderStudentChecklist} from "./renderStudentChecklist.js";
 
-export function renderStudentChecklist() {
-  let studentChecklistHTML = '';
-
-  studentList.forEach((student) => {
-    const id = student.id;
-    const name = student.name;
-
-    const html = `
-      <div class="student-info" data-student-id="${id}">
-        <div class="student-name-container">
-          <div class="student-name">${name}</div>
-        </div>
-        <div class="student-options">
-          <input class="checkbox js-checkbox js-checkbox-${id}" type="checkbox" data-id="${id}">
-          <button class="delete-button js-delete-button" data-id="${id}">x</button>
-        </div>
-      </div>
-    `;
-
-    studentChecklistHTML += html;
-  });
-
-  document.querySelector('.js-students-checklist-container').innerHTML = studentChecklistHTML
-
+export function initFunctions() {
   document.querySelectorAll('.js-checkbox').forEach((checkbox) => {
     const id = Number(checkbox.dataset.id);
     const targetCheckbox = document.querySelector(`.js-checkbox-${id}`);
@@ -37,9 +15,7 @@ export function renderStudentChecklist() {
         targetCheckbox.checked = matchingStudent.isChecked;
       }
     });
-
-    
-  })
+  });
 
   document.querySelectorAll('.js-checkbox').forEach((checkbox) => {
     checkbox.addEventListener('click', () => {
@@ -69,6 +45,7 @@ export function renderStudentChecklist() {
       reassignId();
       saveToStorage();
       renderStudentChecklist();
+      initFunctions();
       renderStats();
     });
   });

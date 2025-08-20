@@ -1,6 +1,7 @@
 import {addStudent, saveToStorage} from '../data/studentList.js';
 import {renderStats} from "./stats.js";
-import {renderStudentChecklist} from './studentChecklist.js';
+import {renderStudentChecklist} from './renderStudentChecklist.js';
+import {initFunctions} from './functions.js';
 
 const input = document.querySelector('.js-inputbox');
 
