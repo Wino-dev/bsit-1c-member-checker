@@ -1,0 +1,19 @@
+.last-update, .status {
+  border: solid black;
+  margin-top: 7px;
+  border-radius: 10px;
+  font-size: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.last-update{
+  text-align: center;
+  font-style: italic;
+  color: gray;
+}
+
+.status {
+  padding-left: 41px;
+  display: flex;
+}

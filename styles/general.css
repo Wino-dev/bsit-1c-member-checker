@@ -1,0 +1,11 @@
+body {
+  font-family: roboto, arial;
+  display: flex;
+  justify-content: center;
+}
+
+.interface {
+  display: flex;
+  width: 850px;
+  flex-direction: column;
+}

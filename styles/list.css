@@ -1,0 +1,47 @@
+.students-list-container {
+  border: solid;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-top: 5px;
+}
+
+.students-list-container-header {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.student-info {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.student-name-container {
+  flex: 2;
+  font-size: 18px;
+  padding-left: 30px;
+}
+
+.student-options {
+  display: flex;
+  justify-content: left;
+  flex: 1;
+  align-items: center;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  margin-right: 30px;
+}
+
+.delete-button {
+  border: none;
+  background-color: red;
+  height: 20px;
+  width: 20px;
+  color: white;
+  border-radius: 10px;
+  padding-bottom: 2px;
+}

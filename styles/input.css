@@ -1,0 +1,36 @@
+.input-container {
+  border: solid;
+  display: flex;
+  justify-content: center;
+  height: 40px;
+  align-items: center;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.input-descriptor {
+  margin-right: 20px;
+}
+
+.inputbox {
+  border: 1px solid black;
+  height: 24px;
+  padding-left: 6px;
+  border-radius: 6px;
+  width: 395px;
+}
+
+.add-button {
+  height: 27px;
+  border: 1px solid black;
+  margin-left: 5px;
+  width: 50px; 
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.add-button:active {
+  background-color: lightslategray;
+}
+
+
