@@ -18,6 +18,9 @@ export function renderStudentChecklist() {
 
     const html = `
       <div class="student-info" data-student-id="${id}">
+      <button class="edit-button">
+        <img class="edit-img" src="../images/edit-icon.png">
+      </button>
         <div class="student-name-container">
           <div class="student-name">${name}</div>
         </div>
