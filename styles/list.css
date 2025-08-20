@@ -17,6 +17,7 @@
 }
 
 .student-name-container {
+  display: flex;
   flex: 3;
   font-size: 18px;
   padding-left: 30px;
@@ -65,4 +66,14 @@
 .edit-img {
   width: 15px;
   object-fit: contain;
+}
+
+.edit-name {
+  font-size: 14px;
+  flex: 1;
+  margin-right: 10px;
+}
+
+.save-button {
+  margin-right: 10px;
 }

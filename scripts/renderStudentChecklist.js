@@ -17,19 +17,23 @@ export function renderStudentChecklist() {
     const name = student.name;
 
     const html = `
-      <div class="student-info" data-student-id="${id}">
-      <button class="edit-button">
-        <img class="edit-img" src="../images/edit-icon.png">
-      </button>
-        <div class="student-name-container">
+      <div class="student-info">
+
+        <button class="edit-button js-edit-button" data-id="${id}">
+          <img class="edit-img" src="../images/edit-icon.png">
+        </button>
+
+        <div class="student-name-container js-student-name-container-${id}">
           <div class="student-name">${name}</div>
         </div>
+
         <div class="student-options">
           <input class="checkbox js-checkbox js-checkbox-${id}" type="checkbox" data-id="${id}">
           <div class="delete-button-container js-delete-button-container-${id}">
-            <button class="delete-button js-delete-button" data-id="${id}">x</button>
+              <button class="delete-button js-delete-button" data-id="${id}">x</button>
           </div>
         </div>
+
       </div>
     `;
 

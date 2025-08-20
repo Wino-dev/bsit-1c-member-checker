@@ -2,6 +2,12 @@ import {renderStats} from "./stats.js";
 import {studentList, saveToStorage, reassignId} from "../data/studentList.js";
 import {renderStudentChecklist} from "./renderStudentChecklist.js";
 
+function editStudent(student, name) {
+  student.name = name;
+  saveToStorage();
+  renderStudentChecklist();
+};
+
 function deleteStudent(id) {
   // Uses the id to look for the corresponding student
   // in the studentList using its index
@@ -98,6 +104,43 @@ export function initFunctions() {
       });
       deleteButton.addEventListener('click', () => {
         deleteStudent(id);
+      });
+    });
+  });
+
+  document.querySelectorAll('.js-edit-button').forEach((button) => {
+    button.addEventListener('click', () => {
+      renderStudentChecklist();
+
+      const id = Number(button.dataset.id);
+      let matchingStudent = {};
+
+      studentList.forEach((student) => {
+        if (student.id === id) {
+          matchingStudent = student;
+        };
+      });
+
+      const nameContainer = document.querySelector(`.js-student-name-container-${id}`);
+
+      nameContainer.innerHTML = `
+      <input class="edit-name js-edit-name-${id}"type="text">
+      <button class="save-button js-save-button-${id}">Save</button>
+      `;
+
+      const input = document.querySelector(`.js-edit-name-${id}`);
+      input.value = matchingStudent.name;
+
+      const saveButton = document.querySelector(`.js-save-button-${id}`);
+
+      saveButton.addEventListener('click', () => {
+        editStudent(matchingStudent, input.value);
+      });
+
+      input.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          editStudent(matchingStudent, input.value);    
+        };
       });
     });
   });
