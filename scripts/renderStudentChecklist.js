@@ -23,7 +23,9 @@ export function renderStudentChecklist() {
         </div>
         <div class="student-options">
           <input class="checkbox js-checkbox js-checkbox-${id}" type="checkbox" data-id="${id}">
-          <button class="delete-button js-delete-button" data-id="${id}">x</button>
+          <div class="delete-button-container js-delete-button-container-${id}">
+            <button class="delete-button js-delete-button" data-id="${id}">x</button>
+          </div>
         </div>
       </div>
     `;
