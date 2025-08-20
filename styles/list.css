@@ -16,6 +16,10 @@
   margin-bottom: 5px;
 }
 
+.student-info-even {
+  background-color: rgb(240, 239, 239);
+}
+
 .student-name-container {
   display: flex;
   flex: 3;

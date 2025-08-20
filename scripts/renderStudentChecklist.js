@@ -15,9 +15,16 @@ export function renderStudentChecklist() {
   studentList.forEach((student) => {
     const id = student.id;
     const name = student.name;
+    let classSort = '';
+
+    if (id % 2 === 0) {
+      classSort = 'even'
+    } else {
+      classSort = 'odd'
+    };
 
     const html = `
-      <div class="student-info">
+      <div class="student-info student-info-${classSort}">
 
         <button class="edit-button js-edit-button" data-id="${id}">
           <img class="edit-img" src="https://wino-dev.github.io/bsit-1c-member-checker/images/edit-icon.png">
