@@ -20,7 +20,7 @@ export function renderStudentChecklist() {
       <div class="student-info">
 
         <button class="edit-button js-edit-button" data-id="${id}">
-          <img class="edit-img" src="../images/edit-icon.png">
+          <img class="edit-img" src="https://wino-dev.github.io/bsit-1c-member-checker/images/edit-icon.png">
         </button>
 
         <div class="student-name-container js-student-name-container-${id}">
