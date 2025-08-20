@@ -9,6 +9,19 @@ export function addStudent() {
   
   if (input.value === '') {
     return;
+  };
+
+  let isDuplicateName = false;
+
+  studentList.forEach((student) => {
+    if (student.name === input.value) {
+      isDuplicateName = true;
+    }
+  });
+
+  if (isDuplicateName) {
+    alert("Name already on the list.");
+    return;
   }
 
   let id = studentList.length + 1;

@@ -63,7 +63,7 @@ export function renderStudentChecklist() {
   document.querySelectorAll('.js-delete-button').forEach((button) => {
     button.addEventListener('click', () => {
       const id = Number(button.dataset.id);
-      const index = studentList.findIndex(student => student.id === id);
+      const index = id - 1;
 
       studentList.splice(index, 1);
       reassignId();
