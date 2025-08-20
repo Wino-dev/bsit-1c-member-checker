@@ -2,13 +2,18 @@ import {renderStats} from "./stats.js";
 import {studentList, saveToStorage, reassignId} from "../data/studentList.js";
 import {renderStudentChecklist} from "./renderStudentChecklist.js";
 
+// Initializes all functions running on the page
 export function initFunctions() {
+  // Loops through every checkbox and grabbing their unique ids
   document.querySelectorAll('.js-checkbox').forEach((checkbox) => {
     const id = Number(checkbox.dataset.id);
     const targetCheckbox = document.querySelector(`.js-checkbox-${id}`);
     
     let matchingStudent = {};
 
+    // Initializes the checkbox statuses using their statuses saved
+    // inside localStorage
+    // Run this function at the end of renderStudentChecklist
     studentList.forEach((student) => {
       if (student.id === id) {
         matchingStudent = student;
@@ -17,13 +22,23 @@ export function initFunctions() {
     });
   });
 
+  // Updates the isChecked status of the students when the checkbox is
+  // pressed inside the studentList
   document.querySelectorAll('.js-checkbox').forEach((checkbox) => {
     checkbox.addEventListener('click', () => {
       const isChecked = checkbox.checked;
+
+      // The id inside studentList is a number while the id inside the
+      // checklist itself is a string.
+      
+      // To ensure proper formatting throughout the code, all id 
+      // datasets should be converted to numbers 
       const id = Number(checkbox.dataset.id);
 
       let matchingStudent = {};
 
+      // Looks for the student inside the list and updates its isChecked
+      // according to the checkbox's status beside the student
       studentList.forEach((student) => {
         if (id === student.id) {
           matchingStudent = student;
@@ -31,21 +46,36 @@ export function initFunctions() {
       });
 
       matchingStudent.isChecked = isChecked;
+
+      // Its not necessary to render the whole page after checking the box
+      // since input tags are automatically rendered. 
+      // Due to this, I've decided to only update the localStorage and
+      // update the page's stats
       saveToStorage();
       renderStats();
     });
   });
 
+  // Handles deleting a student from the list.
   document.querySelectorAll('.js-delete-button').forEach((button) => {
     button.addEventListener('click', () => {
+      // Grabs the button's id
       const id = Number(button.dataset.id);
+      
+      // Uses the id to look for the corresponding student
+      // in the studentList using its index
       const index = id - 1;
 
+      // Removes the student from the studentList
       studentList.splice(index, 1);
+      
+      // Ensures that all ids are unique for each student
       reassignId();
+
+      // Re-renders the page after saving the studentList in
+      // localStorage
       saveToStorage();
       renderStudentChecklist();
-      initFunctions();
       renderStats();
     });
   });
