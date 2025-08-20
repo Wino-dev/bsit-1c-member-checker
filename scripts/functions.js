@@ -2,10 +2,29 @@ import {renderStats} from "./stats.js";
 import {studentList, saveToStorage, reassignId} from "../data/studentList.js";
 import {renderStudentChecklist} from "./renderStudentChecklist.js";
 
-function editStudent(student, name) {
-  student.name = name;
-  saveToStorage();
-  renderStudentChecklist();
+function editStudent(targetStudent, input) {
+  let studentExists = false; 
+
+  studentList.forEach((student) => {
+    if (student.name === input) {
+      studentExists = true;
+    }
+  });
+
+  if (studentExists) {
+    alert("Student already exists");
+    renderStudentChecklist();
+    return;
+  } else if(input === '') {
+    alert("Editor contains no name.");
+    renderStudentChecklist();
+    return;
+  } else {
+    targetStudent.name = input;
+    saveToStorage();
+    renderStudentChecklist();
+  } ;
+  
 };
 
 function deleteStudent(id) {
